@@ -1,0 +1,21 @@
+peer chaincode invoke -o orderer.prod.com:7050 -C mychannel -n hello  -c '{"Args":["initLedger"]}' -o orderer.prod.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/prod.com/orderers/orderer.prod.com/msp/tlscacerts/tlsca.prod.com-cert.pem \
+--peerAddresses peer0.org1.prod.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.prod.com/peers/peer0.org1.prod.com/tls/ca.crt \
+--peerAddresses peer0.org2.prod.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.prod.com/peers/peer0.org2.prod.com/tls/ca.crt \
+--peerAddresses peer1.org1.prod.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.prod.com/peers/peer0.org1.prod.com/tls/ca.crt \
+--peerAddresses peer1.org2.prod.com:10051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.prod.com/peers/peer0.org2.prod.com/tls/ca.crt
+
+
+peer chaincode invoke -o orderer.prod.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/prod.com/orderers/orderer.prod.com/msp/tlscacerts/tlsca.prod.com-cert.pem -C mychannel -n hello \
+--peerAddresses peer0.org1.prod.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.prod.com/peers/peer0.org1.prod.com/tls/ca.crt \
+--peerAddresses peer0.org2.prod.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.prod.com/peers/peer0.org2.prod.com/tls/ca.crt \
+--peerAddresses peer1.org1.prod.com:8051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.prod.com/peers/peer0.org1.prod.com/tls/ca.crt \
+--peerAddresses peer1.org2.prod.com:10051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.prod.com/peers/peer0.org2.prod.com/tls/ca.crt -c '{"Args":["Init"]}'
+
+
+-c '{"Args":["initAssetID"]}'
+peer chaincode invoke -o orderer.prod.com:7050 -C mychannel -n hello  -c '{"Args":["initAssetID"]}' -o orderer.prod.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/prod.com/orderers/orderer.prod.com/msp/tlscacerts/tlsca.prod.com-cert.pem \
+
+-c '{"function":"recordFarmerTransaction","Args":["1201","100","09-06-2020","F001"]}'
+peer chaincode invoke -o orderer.prod.com:7050 -C chnv1 -n chainv1  -c '{"Args":["initLedger"]}' -o orderer.ata.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/ata.com/orderers/orderer.ata.com/msp/tlscacerts/tlsca.ata.com-cert.pem \
+
+peer chaincode invoke -o orderer.prod.com:7050 -C mychannel -n hello  -c '{"function":"recordFarmerTransaction","Args":["1200","100","09-06-2020","F001"]}' --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/prod.com/orderers/orderer.prod.com/msp/tlscacerts/tlsca.prod.com-cert.pem 

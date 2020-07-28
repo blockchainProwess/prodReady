@@ -1,0 +1,73 @@
+
+version: '2'
+
+volumes:
+  orderer2.prod.com:
+  orderer3.prod.com:
+  orderer4.prod.com:
+  orderer5.prod.com:
+
+networks:
+  prod:
+
+services:
+
+  orderer2.prod.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer2.prod.com
+    networks:
+    - prod
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer2.prod.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer2.prod.com/tls/:/var/hyperledger/orderer/tls
+        - orderer2.prod.com:/var/hyperledger/production/orderer
+    ports:
+    - 8050:7050
+
+  orderer3.prod.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer3.prod.com
+    networks:
+    - prod
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer3.prod.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer3.prod.com/tls/:/var/hyperledger/orderer/tls
+        - orderer3.prod.com:/var/hyperledger/production/orderer
+    ports:
+    - 9050:7050
+
+  orderer4.prod.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer4.prod.com
+    networks:
+    - prod
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer4.prod.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer4.prod.com/tls/:/var/hyperledger/orderer/tls
+        - orderer4.prod.com:/var/hyperledger/production/orderer
+    ports:
+    - 10050:7050
+
+  orderer5.prod.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer5.prod.com
+    networks:
+    - prod
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer5.prod.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/prod.com/orderers/orderer5.prod.com/tls/:/var/hyperledger/orderer/tls
+        - orderer5.prod.com:/var/hyperledger/production/orderer
+    ports:
+    - 11050:7050
